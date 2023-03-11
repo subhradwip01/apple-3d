@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, SpotLight , Environment, Sparkles} from "@react-three/drei";
+import { OrbitControls, Environment, Sparkles } from "@react-three/drei";
 import { DroneModel } from "../assets/DroneV3/Scene";
+// import { Dronev4 } from "../assets/DroneV4/Scene";
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -14,17 +16,15 @@ const Container = styled.div`
 
 const Drone = () => {
   return (
-    <Container>
-      <Canvas>
+    <Container id="drone">
+      <Canvas >
         <ambientLight intensity={1} />
-        
-      <Environment
-        // background
-        preset="warehouse"
-       />
-        <Sparkles size={2} scale={[10,10,10]} color={'#fff'}/>
-        {/* <directionalLight intensity={0.4} /> */}
-        <DroneModel />
+        <Environment preset="warehouse" />
+        <Sparkles size={2} scale={[10, 10, 10]} color={"#fff"} />
+        <Suspense fallback={null}>
+          <DroneModel scale={[0.6,0.6,0.6]}/>
+          {/* <Dronev4/> */}
+        </Suspense>
         <meshStandardMaterial color="#0a1a1f" />
         <OrbitControls />
       </Canvas>

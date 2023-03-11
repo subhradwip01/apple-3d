@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import styled, { keyframes } from 'styled-components'
+import gsap from "gsap"
+import ScrollTrigger from 'gsap/ScrollTrigger'
+// import 
 
 const Section = styled.section `
     width: 100vw;
@@ -9,6 +12,7 @@ const Section = styled.section `
     display: flex;
     justify-content: center;
     align-items: center;
+
 `
 
 const TextContainer = styled.div`
@@ -62,8 +66,25 @@ const Text = styled.p`
 `
 
 const Quote = () => {
+    gsap.registerPlugin(ScrollTrigger);
+    const sectionRef = useRef();
+    useLayoutEffect(()=>{
+        let elem = sectionRef.current;
+        let trigger = ScrollTrigger.create({
+            trigger : elem,
+            start: "top top",
+            pin:true,
+            pinSpacing:false
+            // end: "400% bottom"
+            // anticipatePin: 1
+            // marker:true
+        })
+        return () => {
+            trigger && trigger.kill()
+        }
+    },[])
   return (
-    <Section>
+    <Section id="#quoto" ref={sectionRef}>
         <TextContainer>
         <Text delay="0s"><span>&quot; You Want To Have Future Where </span></Text>
         <Text delay="0.4s"><span>&nbsp;&nbsp;&nbsp; You're Expecting Things To Be</span></Text>
