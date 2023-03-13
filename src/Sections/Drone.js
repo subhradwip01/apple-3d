@@ -26,7 +26,7 @@ const Drone = () => {
           {/* <Dronev4/> */}
         </Suspense>
         <meshStandardMaterial color="#0a1a1f" />
-        <OrbitControls />
+        {/* <OrbitControls /> */}
       </Canvas>
     </Container>
   );
