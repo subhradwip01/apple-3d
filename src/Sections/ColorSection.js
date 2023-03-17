@@ -38,6 +38,7 @@ const Center = styled.div`
     z-index: 1;
     font-size: var(--fontxxl);
     text-transform: uppercase ;
+    filter: brightness(0.85);
     
 `
 
@@ -47,16 +48,17 @@ const ColorSection = () => {
    const left = useRef();
    const right = useRef();
    const text = useRef();
-
    useLayoutEffect(() => {
     let Elem = section.current;
     let leftElem = left.current;
     let rightElem = right.current;
     let textElem = text.current;
     let updateColor = (color, text, rgbColor) => {
-        rightElem.style.backgroudColol=`rgba(${rgbColor},0.8)`;
-      leftElem.style.backgroudColol=`rgba(${rgbColor},2.4)`;
+      rightElem.style.backgroudColor=`rgba(${rgbColor},0.8)`;
+      leftElem.style.backgroudColor=`rgba(${rgbColor},2.4)`;
       textElem.innerText = text;
+      textElem.style.color = color
+      console.log(textElem.innerText)
     };
 
     // pin the section
@@ -67,7 +69,7 @@ const ColorSection = () => {
         end: `+=${Elem.offsetWidth + 1000}`,
         scrub: 1,
         pin: true,
-        pinSpacing: false,
+        pinSpacing: true,
       },
     });
 
@@ -82,7 +84,7 @@ const ColorSection = () => {
       })
       .to(Elem, {
         onStart: updateColor,
-        onStartParams: ["#9BB5CE", "Sierra Blue", "155, 181, 206"],
+         onStartParams: ["#9BB5CE", "Sierra Blue", "155, 181, 206"],
         onReverseComplete: updateColor,
         onReverseCompleteParams: ["#9BB5CE", "Sierra Blue", "155, 181, 206"],
       })
