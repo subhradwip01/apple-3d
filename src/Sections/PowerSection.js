@@ -19,9 +19,9 @@ const Section = styled.section`
 const Title = styled.h1`
   position: absolute;
   top:50%;
-  left:55%;
+  left:70%;
   transform: translate(-80%,-50%);
-
+  width: 30%;
   text-transform: uppercase;
   font-size: var(--fontBig);
   z-index: 1;
@@ -73,7 +73,7 @@ const PowerSection = () => {
   },[])
 
   return (
-    <Section>
+    <Section id="power">
       <Title>
         Go High With Super Power...
       </Title>

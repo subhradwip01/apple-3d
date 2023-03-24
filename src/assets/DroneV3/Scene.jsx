@@ -29,9 +29,9 @@ export function DroneModel(props) {
       scrollTrigger:{
         trigger:"drone",
         start:"300px top",
-        // end:"bottom-=1000px bottom",
-        // markers:true,
-        // endTrigger:"#power",
+        end:"top top",
+        markers:true,
+        endTrigger:"#power",
         scrub:true
         
       },
@@ -41,17 +41,28 @@ export function DroneModel(props) {
     .to(scene.rotation,{y:0.8},0)
     .to(scene.rotation,{y:0},1)
 
-    .to(camera.position,{x:-2.3},1.4)
-    .to(scene.rotation,{y:0,x:0,z:0},1.4)
+    //Rigth move
+    .to(camera.position,{x:-2.3},1.9)
+    .to(scene.rotation,{y:0,x:0,z:0},1.9)
 
-    .to(camera.position,{x:0.7})
-    .to(scene.rotation,{y:0,x:0,z:0})
 
-    .to(camera.position,{x:-1.3})
-    .to(scene.rotation,{y:0,x:0,y:0})
+    // Left move
+    .to(camera.position,{x:0.7},2.5)
+    .to(scene.rotation,{y:0,x:0,z:0},2.5)
 
-    .to(camera.position,{x:0},3)
-    .to(scene.rotation,{x:1.4,y:0,z:1})
+
+    //Right move
+    .to(camera.position,{x:-1.3},3)
+    .to(scene.rotation,{y:0,x:0,y:0},3)
+
+    // Go to middle
+    .to(camera.position,{x:-2.3})
+    .to(scene.rotation,{x:0,y:-1,z:1})
+
+    .to(camera.position,{x:3})
+    .to(scene.rotation,{x:0,y:-1,z:-1.4})
+
+
     ;
     // tl.fromTo(camera.)
   },[])
@@ -59,10 +70,10 @@ export function DroneModel(props) {
 
 
   useFrame((state, delta) => {
-    fRight.current.rotation.z += delta * 10;
-    fLeft.current.rotation.z += delta * 10;
-    bRight.current.rotation.z += delta * 10;
-    bLeft.current.rotation.z += delta * 10;
+    fRight.current.rotation.z += delta * Math.PI*10;
+    fLeft.current.rotation.z += delta * Math.PI*10;
+    bRight.current.rotation.z += delta * Math.PI*10;
+    bLeft.current.rotation.z += delta * Math.PI*10;
   }, []);
 
   return (

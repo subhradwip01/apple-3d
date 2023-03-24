@@ -74,10 +74,7 @@ const Quote = () => {
             trigger : elem,
             start: "top top",
             pin:true,
-            pinSpacing:false
-            // end: "400% bottom"
-            // anticipatePin: 1
-            // marker:true
+            pinSpacing:false,
         })
         return () => {
             trigger && trigger.kill()

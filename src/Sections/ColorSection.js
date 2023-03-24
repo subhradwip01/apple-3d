@@ -1,6 +1,7 @@
 import React, {useLayoutEffect, useRef} from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
+import { useGLTF, useAnimations } from "@react-three/drei";
 
 const Section = styled.section`
     width:100vw;
@@ -48,12 +49,14 @@ const ColorSection = () => {
    const left = useRef();
    const right = useRef();
    const text = useRef();
+   const { nodes, materials, animations } = useGLTF("/scene.gltf");
    useLayoutEffect(() => {
     let Elem = section.current;
     let leftElem = left.current;
     let rightElem = right.current;
     let textElem = text.current;
     let updateColor = (color, text, rgbColor) => {
+      materials.body.color.set(text);
       rightElem.style.backgroudColor=`rgba(${rgbColor},0.8)`;
       leftElem.style.backgroudColor=`rgba(${rgbColor},2.4)`;
       textElem.innerText = text;
@@ -84,7 +87,7 @@ const ColorSection = () => {
       })
       .to(Elem, {
         onStart: updateColor,
-         onStartParams: ["#9BB5CE", "Sierra Blue", "155, 181, 206"],
+        onStartParams: ["#9BB5CE", "Sierra Blue", "155, 181, 206"],
         onReverseComplete: updateColor,
         onReverseCompleteParams: ["#9BB5CE", "Sierra Blue", "155, 181, 206"],
       })
@@ -119,9 +122,9 @@ const ColorSection = () => {
         onReverseCompleteParams: ["#215E7C", "Blue", "33, 94, 124"],
       });
 
-      return () => {
-        if (t2) t2.kill();
-      };
+    return () => {
+      if (t2) t2.kill();
+    };
     }, []);
 
   return (
