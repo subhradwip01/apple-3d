@@ -26,7 +26,7 @@ const Title = styled.div`
     transform: translateX(-50%);
     font-size: var(--fontBig);
     font-family: var(--fontL);
-    z-index: 1;
+    z-index: 99;
     background-image: linear-gradient(90deg, var(--gradient));
     background-clip: text;
     -webkit-background-clip: text;

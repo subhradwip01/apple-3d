@@ -59,7 +59,7 @@ const TextContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     transform: rotate(-25deg);
-    z-index: 1;
+    z-index: 99;
     margin-bottom: 4rem;  
     align-items : center;
 `

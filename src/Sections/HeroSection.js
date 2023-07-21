@@ -30,7 +30,7 @@ const TextContainer = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    z-index: 1;
+    z-index: 99;
 
     background-image: linear-gradient(-45deg, var(--gradient));
     background-clip: text;

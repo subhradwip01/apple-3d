@@ -19,7 +19,7 @@ const Section = styled.section`
 const TextContainer = styled.p`
   width: 100%;
   height: 50vh;
-  z-index: 1;
+  z-index: 99;
 
   display: flex;
   flex-direction: column;

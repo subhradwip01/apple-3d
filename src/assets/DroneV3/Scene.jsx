@@ -30,7 +30,6 @@ export function DroneModel(props) {
         trigger:"drone",
         start:"300px top",
         end:"top top",
-        markers:true,
         endTrigger:"#power",
         scrub:true
         

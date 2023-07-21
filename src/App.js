@@ -9,6 +9,7 @@ import FLyingSection from './Sections/FLyingSection';
 import HardwareSection from './Sections/HardwareSection';
 import PowerSection from './Sections/PowerSection';
 import ColorSection from './Sections/ColorSection';
+import Footer from './Sections/Footer';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
      <HardwareSection/>
      <PowerSection/>
      <ColorSection/>
+     <Footer/>
      <Drone/>
      </>
     
